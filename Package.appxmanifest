@@ -2,8 +2,8 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
   <Identity Name="eb2de597-c53d-446c-beaa-1d37aabb9bc0" Publisher="CN=Jimi" Version="1.0.0.0" />
   <Properties>
-    <DisplayName>HomeAutomationData</DisplayName>
-    <PublisherDisplayName>Jimi</PublisherDisplayName>
+    <DisplayName>Home Automation - Data</DisplayName>
+    <PublisherDisplayName>Jimi Tallon</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Tallon.HomeAutomation.App.App">
-      <m2:VisualElements DisplayName="Home Automation - Data" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Basic home automation data from Arduino..." ForegroundText="dark" BackgroundColor="#FFFFFF" ToastCapable="true">
+      <m2:VisualElements DisplayName="Home Automation - Data" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Basic home automation data from Arduino..." ForegroundText="dark" BackgroundColor="#FFFFFF">
         <m2:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\BadgeLogo.png" />
         <m2:DefaultTile ShortName="Home Automation - Data" DefaultSize="wide310x150Logo" Wide310x150Logo="Assets\Wide310x150Logo.png">
         </m2:DefaultTile>
@@ -28,6 +28,7 @@
       <Extensions>
         <Extension Category="windows.backgroundTasks" EntryPoint="Tallon.HomeAutomation.TileUpdater">
           <BackgroundTasks>
+            <Task Type="systemEvent" />
             <Task Type="timer" />
           </BackgroundTasks>
         </Extension>

@@ -32,7 +32,6 @@ namespace Tallon.HomeAutomation.App
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            UpdateLiveTile();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -73,27 +72,7 @@ namespace Tallon.HomeAutomation.App
             // Ensure the current window is active
             Window.Current.Activate();
         }
-
-        private static void UpdateLiveTile()
-        {
-            var LiveTile = @"<tile> 
-                                <visual version=""1""> 
-                                  <binding template=""TileWideText04""> 
-                                    <text id=""1"">My first own wide tile notification!</text> 
-                                  </binding> 
-                                  <binding template=""TileSquareText05""> 
-                                    <text id=""1"">My first own small tile notification!</text> 
-                                  </binding> 
-                                </visual> 
-                              </tile>";
-
-            var tileXml = new XmlDocument();
-            tileXml.LoadXml(LiveTile);
-
-            var tileNotification = new Windows.UI.Notifications.TileNotification(tileXml);
-            Windows.UI.Notifications.TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
-        }
-
+        
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>

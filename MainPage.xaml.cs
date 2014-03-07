@@ -4,6 +4,7 @@ using System.Linq;
 using Windows.ApplicationModel.Background;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Tallon.HomeAutomation.Helpers;
 
 namespace Tallon.HomeAutomation.App
 {
@@ -12,7 +13,7 @@ namespace Tallon.HomeAutomation.App
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private const string TaskName = "TileUpdater";
+        private const string TaskName = "Home Automation - Data Task";
         private const string TaskEntry = "Tallon.HomeAutomation.TileUpdater";
 
         public MainPage()
@@ -22,6 +23,9 @@ namespace Tallon.HomeAutomation.App
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var data = HomeSensorHelper.GetSensorData();
+            TileHelper.UpdateTile(data);
+            Temperature.Text = data.Temperature.ToString();
             var result = await BackgroundExecutionManager.RequestAccessAsync();
             if (result == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
                 result == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity)
@@ -31,11 +35,21 @@ namespace Tallon.HomeAutomation.App
                     task.Value.Unregister(true);
                 }
 
-                var builder = new BackgroundTaskBuilder {Name = TaskName, TaskEntryPoint = TaskEntry};
-                builder.SetTrigger(new TimeTrigger(15, false));
-                var registration = builder.Register();
+                RegisterMaintenanceBackgroundTask();
             }
 
+        }
+
+
+        private static void RegisterMaintenanceBackgroundTask()
+        {
+            var builder = new BackgroundTaskBuilder {Name = TaskName, TaskEntryPoint = TaskEntry};
+            IBackgroundTrigger trigger = new TimeTrigger(15, false);
+            builder.SetTrigger(trigger);
+            IBackgroundCondition condition =
+                new SystemCondition(SystemConditionType.InternetAvailable);
+            builder.AddCondition(condition); 
+            IBackgroundTaskRegistration task = builder.Register();
         }
     }
 }

@@ -103,13 +103,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="Tallon.HomeAutomation\Tallon.HomeAutomation.csproj">
-      <Project>{0a26376d-971a-4231-9b4a-0b82520dfb0f}</Project>
-      <Name>Tallon.HomeAutomation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -147,6 +140,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.6.0.1\lib\netcore45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Tallon.HomeAutomation\Tallon.HomeAutomation.csproj">
+      <Project>{0a26376d-971a-4231-9b4a-0b82520dfb0f}</Project>
+      <Name>Tallon.HomeAutomation</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

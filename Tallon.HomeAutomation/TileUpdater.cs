@@ -1,28 +1,23 @@
 ﻿using System;
 using Windows.ApplicationModel.Background;
 using Windows.UI.Notifications;
+using Tallon.HomeAutomation.Helpers;
 
 namespace Tallon.HomeAutomation
 {
     public sealed class TileUpdater : IBackgroundTask 
     {
-        public void Run(IBackgroundTaskInstance taskInstance)
+        public async void Run(IBackgroundTaskInstance taskInstance)
         {
+            taskInstance.Canceled += OnCanceled;
             var defferal = taskInstance.GetDeferral();
-
-            var updater = TileUpdateManager.CreateTileUpdaterForApplication();
-            updater.EnableNotificationQueue(true);
-            updater.Clear();
-
-            for (var i = 1; i < 6; i++)
-            {
-                var tile = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWideText04);
-                tile.GetElementsByTagName("text")[0].InnerText = "Tile " + i;
-                tile.GetElementsByTagName("text")[1].InnerText = DateTime.Now.ToString("hh-mm");
-                updater.Update(new TileNotification(tile));
-            }
-
+            TileHelper.UpdateTile(HomeSensorHelper.GetSensorData());
             defferal.Complete(); 
+        }
+
+        private void OnCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
+        {
+            //Do some logic when the task is cancelled....
         }
     }
 }

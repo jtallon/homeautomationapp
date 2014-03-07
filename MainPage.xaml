@@ -7,7 +7,7 @@
     mc:Ignorable="d">
     <Grid Background="#FF575555">
         <StackPanel Margin="20">
-            <TextBlock Text="This does nothing for now..." FontSize="24" />    
+            <TextBlock x:Name="Temperature" Text="N/A" FontSize="24" />    
         </StackPanel>
         
     </Grid>

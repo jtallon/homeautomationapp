@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Helpers\HomeSensorHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="Helpers\TileHelper.cs" />
     <Compile Include="Models\HomeSensorData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TileUpdater.cs" />
