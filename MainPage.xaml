@@ -5,10 +5,58 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid Background="#FF575555">
-        <StackPanel Margin="20">
-            <TextBlock x:Name="Temperature" Text="N/A" FontSize="24" />    
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="TextStyle">
+            <Setter Property="Foreground" Value="DimGray"/>
+            <Setter Property="Text" Value="Loading..."/>
+            <Setter Property="FontSize" Value="50" />
+            <Setter Property="Margin" Value="10 20 0 0"/>
+        </Style>
+        <Style TargetType="Image" x:Key="ImageStyle">
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="75"/>
+        </Style>
+    </Page.Resources>
+    <Grid Background="#FFFFFF">
+        <StackPanel Margin="40">
+            <TextBlock Style="{StaticResource TextStyle}" HorizontalAlignment="Center" Margin="0 0 0 20" Foreground="SteelBlue" Text="Home Automation" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="Assets/Temperature.png" Grid.Row="0" Grid.Column="0"  Style="{StaticResource ImageStyle}"></Image>
+                <TextBlock Grid.Row="0" Grid.Column="1" Name="Temperature" Style="{StaticResource TextStyle}"></TextBlock>
+
+                <Image Source="Assets/Dewpoint.png" Grid.Row="1" Grid.Column="0"  Style="{StaticResource ImageStyle}"></Image>
+                <TextBlock Grid.Row="1" Grid.Column="1" Name="DewPoint" Style="{StaticResource TextStyle}"></TextBlock>
+
+                <Image Source="Assets/Humidity.png" Grid.Row="2" Grid.Column="0"  Style="{StaticResource ImageStyle}"></Image>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="Humidity" Style="{StaticResource TextStyle}"></TextBlock>
+
+                <Image Source="Assets/Light.png" Grid.Row="3" Grid.Column="0"  Style="{StaticResource ImageStyle}"></Image>
+                <TextBlock Grid.Row="3" Grid.Column="1" Name="Light" Style="{StaticResource TextStyle}"></TextBlock>
+
+                <Image Source="Assets/CarbonMonoxide.png" Grid.Row="4" Grid.Column="0"  Style="{StaticResource ImageStyle}"></Image>
+                <TextBlock Grid.Row="4" Grid.Column="1" Name="CarbonMonoxide" Style="{StaticResource TextStyle}"></TextBlock>
+
+                <Image Source="Assets/Smoke.png" Grid.Row="5" Grid.Column="0"  Style="{StaticResource ImageStyle}"></Image>
+                <TextBlock Grid.Row="5" Grid.Column="1" Name="Smoke" Style="{StaticResource TextStyle}"></TextBlock>               
+            </Grid>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="RefreshClicked" Margin="0 30 10 5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Assets/Refresh.png" Width="25" Height="25" Margin="0 20 0 0"></Image>
+                    <TextBlock Name="LastUpdated" Style="{StaticResource TextStyle}" FontSize="20" HorizontalAlignment="Right" Foreground="LightSteelBlue" />
+                </StackPanel>
+            </Button>
         </StackPanel>
-        
     </Grid>
 </Page>

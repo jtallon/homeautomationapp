@@ -120,10 +120,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\BadgeLogo.scale-180.png" />
+    <Content Include="Assets\CarbonMonoxide.png" />
+    <Content Include="Assets\Dewpoint.png" />
+    <Content Include="Assets\Humidity.png" />
+    <Content Include="Assets\Light.png" />
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\Refresh.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\Smoke.png" />
     <Content Include="Assets\SplashScreen.scale-180.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\Temperature.png" />
     <Content Include="Assets\Wide310x150Logo.scale-180.png" />
   </ItemGroup>
   <ItemGroup>
